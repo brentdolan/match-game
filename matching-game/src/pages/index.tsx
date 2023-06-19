@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { Title } from '@/components/title/title'
 import { VariableText } from '@/components/variable-text/variable-text'
+import { Button } from '@/components/button/button'
 import { Card } from '@/components/cards/card'
 export default function Home (): JSX.Element {
   return (
@@ -14,7 +15,10 @@ export default function Home (): JSX.Element {
               <link rel="icon" href="/favicon.ico" />
           </Head>
           <main className={styles.main}>
-              <Title text={'Matchinator'}/>
+              <div className={styles.navDiv}>
+                  <Title text={'Matchinator'}/>
+                  <Button text={'Start Over'}/>
+              </div>
               <VariableText text={'Click Any Card To Begin'}/>
               <Card faceDown={false} emoji={'⭐️'}/>
               <Card faceDown emoji={'⭐️'}/>
