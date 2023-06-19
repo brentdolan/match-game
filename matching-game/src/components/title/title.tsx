@@ -1,14 +1,15 @@
+import React from 'react'
 import styles from './title.module.css'
 
 interface TitleProps {
   text: string
 }
-export const Title = ({ text }: TitleProps) => {
+export const Title = ({ text }: TitleProps): JSX.Element => {
   return (
-      <nav>
-          <div data-testid="title" className={styles.title}>
-              {text}
-          </div>
-      </nav>
+
+      <span data-testid="title" className={styles.title}>
+          {text}
+      </span>
+
   )
 }
