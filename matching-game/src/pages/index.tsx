@@ -5,7 +5,7 @@ import { Title } from '@/components/title/title'
 import { VariableText } from '@/components/variable-text/variable-text'
 import { Button } from '@/components/button/button'
 import { Card } from '@/components/cards/card'
-export default function Home (): JSX.Element {
+export const Home = (): JSX.Element => {
   return (
       <>
           <Head>
@@ -26,3 +26,5 @@ export default function Home (): JSX.Element {
       </>
   )
 }
+
+export default Home

@@ -1,0 +1,14 @@
+name: Run tests
+on: pull_request
+defaults:
+  run:
+    working-directory: matching-game
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm i
+      - name: Run tests
+        run: npm run test
