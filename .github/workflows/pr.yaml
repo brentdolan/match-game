@@ -1,5 +1,8 @@
 name: Run tests
 on: pull_request
+defaults:
+  run:
+    working-directory: matching-game
 jobs:
   build:
     runs-on: ubuntu-latest
