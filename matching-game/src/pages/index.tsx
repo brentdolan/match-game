@@ -1,4 +1,4 @@
-import React, { type MouseEventHandler } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { Title } from '@/components/title/title'
@@ -11,9 +11,7 @@ export const Home = (): JSX.Element => {
     const newValue = !faceDown[id]
     setFaceDown({ ...faceDown, [id]: newValue })
   }
-  // if (!faceDown[2]) {
-  //   setFaceDown({ ...faceDown, 2: true })
-  // }
+
   return (
       <>
           <Head>
