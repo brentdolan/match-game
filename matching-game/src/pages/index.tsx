@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type MouseEventHandler } from 'react'
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { Title } from '@/components/title/title'
@@ -6,6 +6,14 @@ import { VariableText } from '@/components/variable-text/variable-text'
 import { Button } from '@/components/button/button'
 import { Card } from '@/components/cards/card'
 export const Home = (): JSX.Element => {
+  const [faceDown, setFaceDown] = React.useState({ 1: true, 2: false })
+  const onCardClick = (id: number): void => {
+    const newValue = !faceDown[id]
+    setFaceDown({ ...faceDown, [id]: newValue })
+  }
+  // if (!faceDown[2]) {
+  //   setFaceDown({ ...faceDown, 2: true })
+  // }
   return (
       <>
           <Head>
@@ -20,8 +28,8 @@ export const Home = (): JSX.Element => {
                   <Button text={'Start Over'}/>
               </div>
               <VariableText text={'Click Any Card To Begin'}/>
-              <Card faceDown={false} emoji={'⭐️'}/>
-              <Card faceDown emoji={'⭐️'}/>
+              <Card faceDown={faceDown[1]} emoji={'⭐️'} whichCard={1} onClick={onCardClick}/>
+              <Card faceDown={faceDown[2]} emoji={'⭐️'} whichCard={2} onClick={onCardClick}/>
           </main>
       </>
   )
