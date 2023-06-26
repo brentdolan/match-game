@@ -9,13 +9,13 @@ import { Grid } from '@/components/grid/grid'
 export const Home = (): JSX.Element => {
   const emojiList: string[] = ['🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸']
   const initialFaceDownValues = emojiList.reduce((reducer, emoji, index) => ({ ...reducer, [index]: true }), {})
-  const [faceDown, setFaceDown] = React.useState(initialFaceDownValues)
+  const [faceDown, setFaceDown] = React.useState<Record<number, boolean>>(initialFaceDownValues)
   const onCardClick = (id: number): void => {
     const newValue = !faceDown[id]
     setFaceDown({ ...faceDown, [id]: newValue })
   }
   const test = emojiList.map(
-    (emoji: string, index: number) => <Card emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
+    (emoji: string, index: number) => <Card key={index} emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
   )
 
   return (
