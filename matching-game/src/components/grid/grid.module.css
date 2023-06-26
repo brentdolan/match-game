@@ -1,0 +1,21 @@
+ .grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     grid-gap: 1rem;
+     width: 90%;
+     margin-inline: auto;
+ }
+
+
+@media (min-width: 768px){
+.grid {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+}
+
+ @media (min-width: 1024px){
+     .grid {
+         grid-template-columns: 1fr 1fr 1fr 1fr;
+         width: 75%;
+     }
+ }
