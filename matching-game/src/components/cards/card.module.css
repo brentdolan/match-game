@@ -1,10 +1,10 @@
 .card {
-    font-size: 96px;
+    font-size: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 320px;
-    height: 235px;
+    width: 100%;
+    aspect-ratio: 1.5;
     border: 3px solid #000000;
     border-radius: 10px;
 }

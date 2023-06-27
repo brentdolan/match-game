@@ -6,10 +6,8 @@ interface TitleProps {
 }
 export const Title = ({ text }: TitleProps): JSX.Element => {
   return (
-
       <span data-testid="title" className={styles.title}>
           {text}
       </span>
-
   )
 }

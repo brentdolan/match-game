@@ -1,0 +1,9 @@
+.container {
+    display: grid;
+    grid-template-columns: 10rem 10rem 10rem;
+    grid-gap: 1rem;
+}
+body {
+    margin: 0;
+    background-color: #353639;
+}

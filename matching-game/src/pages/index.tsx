@@ -5,12 +5,18 @@ import { Title } from '@/components/title/title'
 import { VariableText } from '@/components/variable-text/variable-text'
 import { Button } from '@/components/button/button'
 import { Card } from '@/components/cards/card'
+import { Grid } from '@/components/grid/grid'
 export const Home = (): JSX.Element => {
-  const [faceDown, setFaceDown] = React.useState({ 1: true, 2: false })
+  const emojiList: string[] = ['🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸']
+  const initialFaceDownValues = emojiList.reduce((reducer, emoji, index) => ({ ...reducer, [index]: true }), {})
+  const [faceDown, setFaceDown] = React.useState<Record<number, boolean>>(initialFaceDownValues)
   const onCardClick = (id: number): void => {
     const newValue = !faceDown[id]
     setFaceDown({ ...faceDown, [id]: newValue })
   }
+  const test = emojiList.map(
+    (emoji: string, index: number) => <Card key={index} emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
+  )
 
   return (
       <>
@@ -26,8 +32,10 @@ export const Home = (): JSX.Element => {
                   <Button text={'Start Over'}/>
               </div>
               <VariableText text={'Click Any Card To Begin'}/>
-              <Card faceDown={faceDown[1]} emoji={'⭐️'} whichCard={1} onClick={onCardClick}/>
-              <Card faceDown={faceDown[2]} emoji={'⭐️'} whichCard={2} onClick={onCardClick}/>
+              <Grid>
+                  {test}
+              </Grid>
+
           </main>
       </>
   )

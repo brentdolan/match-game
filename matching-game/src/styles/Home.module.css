@@ -1,7 +1,8 @@
 .main {
     background-color: #353639;
-    height: 100vh;
 }
 .navDiv {
     display: flex;
+    margin-inline: 2em;
+    padding-block: 1em;
 }
