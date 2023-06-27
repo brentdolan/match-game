@@ -5,7 +5,7 @@ interface CardProps {
   emoji: string
   faceDown: boolean
   whichCard: number
-  onClick: (id: number) => void
+  onClick: (index: number, emoji: string) => void
 }
 
 export const Card = ({ emoji, faceDown, whichCard, onClick }: CardProps): JSX.Element => {
@@ -16,7 +16,9 @@ export const Card = ({ emoji, faceDown, whichCard, onClick }: CardProps): JSX.El
     cardText = ''
   }
   const handleClick = (): void => {
-    onClick(whichCard)
+    if (faceDown) {
+      onClick(whichCard, emoji)
+    }
   }
   return (
       <div onClick={handleClick} data-testid="card" className={`${styles.card} ${cardClass}`}>

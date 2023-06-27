@@ -6,17 +6,35 @@ import { VariableText } from '@/components/variable-text/variable-text'
 import { Button } from '@/components/button/button'
 import { Card } from '@/components/cards/card'
 import { Grid } from '@/components/grid/grid'
+
 export const Home = (): JSX.Element => {
-  const emojiList: string[] = ['🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸', '🐸']
+  const emojiList: string[] = ['🦆', '🐸', '🦤', '🦖', '🐸', '🦭', '🦖', '🦆', '🦦', '🦦', '🦤', '🦭']
   const initialFaceDownValues = emojiList.reduce((reducer, emoji, index) => ({ ...reducer, [index]: true }), {})
   const [faceDown, setFaceDown] = React.useState<Record<number, boolean>>(initialFaceDownValues)
-  const onCardClick = (id: number): void => {
-    const newValue = !faceDown[id]
-    setFaceDown({ ...faceDown, [id]: newValue })
+  const [clickedCard, setClickedCard] = React.useState<{ emoji: string, index: number }>({ emoji: '', index: -1 })
+  const [numberOfMatches, setNumberOfMatches] = React.useState(0)
+  const flipCard = (index: number, newValue: boolean): void => {
+    setTimeout(() => {
+      setFaceDown({ ...faceDown, [index]: newValue })
+    }, 1000)
   }
-  const test = emojiList.map(
-    (emoji: string, index: number) => <Card key={index} emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
-  )
+  const onCardClick = (index: number, emoji: string): void => {
+    setFaceDown({ ...faceDown, [index]: !faceDown[index] })
+
+    if (clickedCard.emoji === '') {
+      setClickedCard({ index, emoji })
+      return
+    }
+
+    if (clickedCard.emoji === emoji) {
+      setNumberOfMatches(numberOfMatches + 1)
+    } else {
+      flipCard(index, faceDown[index])
+      flipCard(clickedCard.index, true)
+    }
+
+    setClickedCard({ emoji: '', index: -1 })
+  }
 
   return (
       <>
@@ -33,7 +51,9 @@ export const Home = (): JSX.Element => {
               </div>
               <VariableText text={'Click Any Card To Begin'}/>
               <Grid>
-                  {test}
+                  {emojiList.map(
+                    (emoji: string, index: number) => <Card key={index} emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
+                  )}
               </Grid>
 
           </main>
