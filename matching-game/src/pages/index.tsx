@@ -14,6 +14,12 @@ export const Home = (): JSX.Element => {
   const [clickedCard, setClickedCard] = React.useState<{ emoji: string, index: number }>({ emoji: '', index: -1 })
   const [numberOfMatches, setNumberOfMatches] = React.useState(0)
   const [numberOfAttempts, setNumberOfAttempts] = React.useState(0)
+
+  const startOver = (): void => {
+    setNumberOfMatches(0)
+    setNumberOfAttempts(0)
+    setFaceDown(initialFaceDownValues)
+  }
   const flipCard = (index: number, newValue: boolean): void => {
     setTimeout(() => {
       setFaceDown({ ...faceDown, [index]: newValue })
@@ -51,7 +57,7 @@ export const Home = (): JSX.Element => {
           <main className={styles.main}>
               <div className={styles.navDiv}>
                   <Title text={'Matchinator'}/>
-                  <Button text={'Start Over'} />
+                  <Button text={'Start Over'} onClick={startOver} />
               </div>
               <VariableText text={'Number of Attempts: '} attempts={numberOfAttempts}/>
               <Grid>
