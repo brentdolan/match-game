@@ -13,11 +13,13 @@ export const Home = (): JSX.Element => {
   const [faceDown, setFaceDown] = React.useState<Record<number, boolean>>(initialFaceDownValues)
   const [clickedCard, setClickedCard] = React.useState<{ emoji: string, index: number }>({ emoji: '', index: -1 })
   const [numberOfMatches, setNumberOfMatches] = React.useState(0)
+  const [numberOfAttempts, setNumberOfAttempts] = React.useState(0)
   const flipCard = (index: number, newValue: boolean): void => {
     setTimeout(() => {
       setFaceDown({ ...faceDown, [index]: newValue })
     }, 1000)
   }
+
   const onCardClick = (index: number, emoji: string): void => {
     setFaceDown({ ...faceDown, [index]: !faceDown[index] })
 
@@ -28,9 +30,11 @@ export const Home = (): JSX.Element => {
 
     if (clickedCard.emoji === emoji) {
       setNumberOfMatches(numberOfMatches + 1)
+      setNumberOfAttempts(numberOfAttempts + 1)
     } else {
       flipCard(index, faceDown[index])
       flipCard(clickedCard.index, true)
+      setNumberOfAttempts(numberOfAttempts + 1)
     }
 
     setClickedCard({ emoji: '', index: -1 })
@@ -47,9 +51,9 @@ export const Home = (): JSX.Element => {
           <main className={styles.main}>
               <div className={styles.navDiv}>
                   <Title text={'Matchinator'}/>
-                  <Button text={'Start Over'}/>
+                  <Button text={'Start Over'} />
               </div>
-              <VariableText text={'Click Any Card To Begin'}/>
+              <VariableText text={'Number of Attempts: '} attempts={numberOfAttempts}/>
               <Grid>
                   {emojiList.map(
                     (emoji: string, index: number) => <Card key={index} emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
