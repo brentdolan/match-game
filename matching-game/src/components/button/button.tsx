@@ -3,10 +3,11 @@ import styles from './button.module.css'
 
 interface ButtonProps {
   text: string
+  onClick: () => void
 }
-export const Button = ({ text }: ButtonProps): JSX.Element => {
+export const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
   return (
-      <button data-testid="button" className={styles.button}>
+      <button onClick={onClick} data-testid="button" className={styles.button}>
           {text}
       </button>
   )
