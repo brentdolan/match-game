@@ -7,8 +7,21 @@ import { Button } from '@/components/button/button'
 import { Card } from '@/components/cards/card'
 import { Grid } from '@/components/grid/grid'
 
+const startingEmojiList: string[] = ['🦆', '🐸', '🦤', '🦖', '🐸', '🦭', '🦖', '🦆', '🦦', '🦦', '🦤', '🦭']
+const randomizeEmojis = (emojis: string[]): string[] => {
+  const emojiListCopy: string[] = [...emojis]
+  for (let i = 0; i < emojiListCopy.length; i += 1) {
+    const x = Math.floor(Math.random() * 12)
+    const y = Math.floor(Math.random() * 12)
+    const z = emojiListCopy[x]
+    emojiListCopy[x] = emojiListCopy[y]
+    emojiListCopy[y] = z
+  }
+  return emojiListCopy
+}
+
 export const Home = (): JSX.Element => {
-  const emojiList: string[] = ['🦆', '🐸', '🦤', '🦖', '🐸', '🦭', '🦖', '🦆', '🦦', '🦦', '🦤', '🦭']
+  const [emojiList, setEmojiList] = React.useState(randomizeEmojis(startingEmojiList))
   const initialFaceDownValues = emojiList.reduce((reducer, emoji, index) => ({ ...reducer, [index]: true }), {})
   const [faceDown, setFaceDown] = React.useState<Record<number, boolean>>(initialFaceDownValues)
   const [clickedCard, setClickedCard] = React.useState<{ emoji: string, index: number }>({ emoji: '', index: -1 })
@@ -19,11 +32,12 @@ export const Home = (): JSX.Element => {
     setNumberOfMatches(0)
     setNumberOfAttempts(0)
     setFaceDown(initialFaceDownValues)
+    setEmojiList(randomizeEmojis(emojiList))
   }
   const flipCard = (index: number, newValue: boolean): void => {
     setTimeout(() => {
       setFaceDown({ ...faceDown, [index]: newValue })
-    }, 1000)
+    }, 500)
   }
 
   const onCardClick = (index: number, emoji: string): void => {
@@ -62,7 +76,15 @@ export const Home = (): JSX.Element => {
               <VariableText text={'Number of Attempts: '} attempts={numberOfAttempts}/>
               <Grid>
                   {emojiList.map(
-                    (emoji: string, index: number) => <Card key={index} emoji={emoji} faceDown={faceDown[index]} whichCard={index} onClick={onCardClick}/>
+                    (emoji: string, index: number) => (
+                        <Card
+                            key={index}
+                            emoji={emoji}
+                            faceDown={faceDown[index]}
+                            whichCard={index}
+                            onClick={onCardClick}
+                        />
+                    )
                   )}
               </Grid>
 
