@@ -1,38 +1,16 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## About the Project
 
-First, run the development server:
+The project is called the 'Matchinator' and it is a matching game built using Typescript on React. The game involves matching different card components to each other based on the emoji on them. You start by clicking the card and "flipping" the card. If you have a match after flipping two cards they will stay flipped up, if you do not then they will go face down again. The game tracks how many attempts you have made, and once you match all the cards you can click the start over button to reset the game. The cards will all be in different places each time you start over to help ensure that the game will never get too easy.   
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## What I Learned Building the Project
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Before the project I had a very limited and basic understanding of JavaScript and using Typescript in React was foreign to  me. The project has helped to teach me how components work and how to use them correctly. By using these components I am now able to incorporate some of my HTML and CSS knowledge to build basic sites with Typescript/React. Along with this I have a stronger understanding of functions and I better understand state which is something I knew nothing about previously.  
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Hardest Part of the Project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The hardest thing to deal with during the project was that I was constantly learning things on the fly, and so I had to try and overcome a learning curve that proved frustrating at times. Along with this I also still struggle with loops and how to correctly use them to benefit me. Many of the issues I ran into ended up being related to me not being comfortable coding on my on, especially with Typescript/React. Learning how to move past roadblocks and knowing when to ask for help was a very challenging thing to deal with. This combined with general frustration with new concepts ended up being quite the challenge throughout the whole process.  
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
